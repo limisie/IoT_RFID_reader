@@ -71,45 +71,14 @@ class Reader:
 
 class Card:
 
-    def __init__(self, card_rfid_no, employee_id, date):
-        self.__card_rfid_no = card_rfid_no
+    def __init__(self, rfid_tag, employee_id, date):
+        self.__rfid_tag = rfid_tag
         self.__employee_id = employee_id
         self.__date_registered = date
         self.__edited = False
 
 
-def __load_employees():
-    pass
-
-
-def __load_readers():
-    file = open(readers_file, newline='')
-    reader = csv.reader(file)
-
-    last_id = 0
-
-    header = next(reader)
-    # header = [reader_id, date_registered, date_unregistered, description]
-
-    for row in reader:
-        reader_id = int(row[0])
-        date_registered = datetime.strptime(row[1], '%d/%m/%Y').date()
-        if row[2] is not '':
-            date_unregistered = datetime.strptime(row[2], '%d/%m/%Y').date()
-        else:
-            date_unregistered = None
-        description = row[3]
-
-        index = get_reader_index(reader_id)
-        if index is not -1:
-            readers.pop(index)
-
-        readers.append(Reader(reader_id, date_registered, date_unregistered, description, False))
-
-        if int(row[0]) > last_id:
-            last_id = int(row[0])
-
-    Reader.reader_id_counter = last_id + 1
+def save_changes_card(index):
     pass
 
 
@@ -126,7 +95,9 @@ def save_changes_reader(index):
 
     row = readers[index].get_data()
     writer.writerow(row)
+
     readers[index].set_edited(False)
+    file.close()
     pass
 
 
@@ -139,6 +110,41 @@ def save_changes_readers():
             row = reader.get_data()
             writer.writerow(row)
             reader.set_edited(False)
+
+    file.close()
+    pass
+
+
+def __load_employees():
+    pass
+
+
+def __load_readers():
+    file = open(readers_file, newline='')
+    reader = csv.reader(file)
+
+    last_id = 0
+
+    header = next(reader)
+    # header = [reader_id, date_registered, date_unregistered, description]
+
+    for row in reader:
+        index = get_reader_index(int(row[0]))
+        if index is not -1:
+            readers.pop(index)
+
+        if row[2] is '':
+            reader_id = int(row[0])
+            date_registered = datetime.strptime(row[1], '%d/%m/%Y').date()
+            description = row[3]
+
+            readers.append(Reader(reader_id, date_registered, None, description, False))
+
+        if int(row[0]) > last_id:
+            last_id = int(row[0])
+
+    Reader.reader_id_counter = last_id + 1
+    file.close()
     pass
 
 
