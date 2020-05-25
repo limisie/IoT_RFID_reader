@@ -1,3 +1,19 @@
+workers = []
+clients = []
+
+
+def register_worker():
+    pass
+
+
+def __add_worker(name, surname, rfid_id):
+    workers.append(Worker(name, surname, rfid_id))
+
+
+def add_reader(name):
+    clients.append(Client(name))
+
+
 class Worker:
     __worker_counter = 0
 
@@ -24,4 +40,3 @@ class Client:
 
     def log_worker(self, rdif_id):
         pass
-
