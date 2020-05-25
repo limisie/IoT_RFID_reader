@@ -1,42 +1,39 @@
-workers = []
-clients = []
+from datetime import date
+
+from sample.helper import *
+from sample.error import *
 
 
-def register_worker():
+def register_reader(name):
+    readers.append(Reader(reader_id=Reader.reader_id_counter, date_registered=date.today(), date_unregistered=None,
+                          description=name, edited=True))
+    Reader.reader_id_counter += 1
+    save_changes_readers()
     pass
 
 
-def __add_worker(name, surname, rfid_id):
-    workers.append(Worker(name, surname, rfid_id))
+def unregister_reader(reader_id):
+    index = get_reader_index(reader_id)
+
+    if index is -1:
+        not_found_err()
+    else:
+        print(str(readers[index].get_data()))
+        if readers[index].get_data()[2] is '':
+            readers[index].unregister(date=date.today())
+            readers[index].set_edited(True)
+        else:
+            impossible_err()
+    print(str(readers[index].get_data()))
+    save_changes_reader(index)
+    pass
 
 
-def add_reader(name):
-    clients.append(Client(name))
+if __name__ == "__main__":
+    load_db()
 
+    for reader in readers:
+        print(reader.to_string())
 
-class Worker:
-    __worker_counter = 0
-
-    def __init__(self, name, surname, rdif_id):
-        self.__id = self.__worker_counter
-        self.__worker_counter += 1
-        self.__name = name
-        self.__surname = surname
-        self.__rdif_id = rdif_id
-        self.__logged_in = False
-        self.__logs = []
-
-    def get_full_name(self):
-        return str(self.__name, self.__surname)
-
-
-class Client:
-    __terminal_counter = 0
-
-    def __init__(self, name):
-        self.__terminal_id = self.__terminal_counter
-        self.__terminal_counter += 1
-        self.__name = name
-
-    def log_worker(self, rdif_id):
-        pass
+    register_reader('hol')
+    unregister_reader(1)
