@@ -1,0 +1,30 @@
+INFO:root:26/05/2020 20:53:09 zarejestrowano pracownika no. 7 Kaja Limisiewicz
+INFO:root:26/05/2020 20:56:04 zarejestrowano pracownika no. 8 Janina Nowak
+INFO:root:26/05/2020 21:15:52 zarejestrowano kartę no. flkdgj
+INFO:root:26/05/2020 21:17:39 zarejestrowano pracownika no. 7 Maciej Nowak
+INFO:root:26/05/2020 21:44:58 zarejestrowano kartę no. 
+INFO:root:26/05/2020 21:47:31 kartę no. flkdgjprzypisano pracownikowi no. 4
+INFO:root:26/05/2020 21:48:04 zarejestrowano kartę no. dgjjod
+INFO:root:26/05/2020 22:17:36 połączono Czytnik RFID no. 4: wejście nr 5
+INFO:root:26/05/2020 22:19:22 rozłączono Czytnik RFID no. 4: wejście nr 5
+INFO:root:26/05/2020 22:20:06 zarejestrowano czytrnik RFID no. 5
+INFO:root:26/05/2020 22:20:37 połączono Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:20:57 rozłączono Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:22:33 zarejestrowano czytrnik RFID no. 5
+INFO:root:26/05/2020 22:22:43 połączono Czytnik RFID no. 5: wejście północne
+WARNING:root:26/05/2020 22:22:57 karta RFID no. elfjeir, podanej karty nie ma w systemie , Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:23:14 rozłączono Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:42:32 połączono Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:43:06 rozłączono Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:43:15 połączono Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:43:35 rozłączono Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:43:59 połączono Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:44:02 karta RFID no. jKi9iJ, Pracownik 3: Maciej Nowak, Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:44:07 rozłączono Czytnik RFID no. 5: wejście północne
+INFO:root:26/05/2020 22:51:21 zarejestrowano pracownika no. 8 Piotr Nowak
+INFO:root:26/05/2020 22:51:34 zarejestrowano kartę no. eirj6F
+INFO:root:26/05/2020 22:51:34 kartę no. eirj6F przypisano pracownikowi no. 8
+INFO:root:26/05/2020 22:52:50 zarejestrowano kartę no. hjkh8S
+INFO:root:26/05/2020 22:55:42 wyrejestrowano pracownika no. 8 Piotr Nowak
+INFO:root:26/05/2020 22:55:53 zarejestrowano czytrnik RFID no. 6
+INFO:root:26/05/2020 22:55:58 wyrejestrowano czytrnik RFID no. 6
