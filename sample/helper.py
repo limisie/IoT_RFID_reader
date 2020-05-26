@@ -1,10 +1,10 @@
 import csv
-from datetime import datetime
 
 cards_file = "data/cards.csv"
 employees_file = "data/employees.csv"
 logs_file = "data/logs.csv"
 readers_file = "data/readers.csv"
+report = './data/report.csv'
 
 cards = []
 employees = []
@@ -158,6 +158,32 @@ def save_log(date, rfid_tag, reader_id):
 
     file.close()
     pass
+
+
+def print_report(employee_id):
+    index = get_index(employee_id, 'employees')
+
+    logs = open(logs_file, newline='')
+    reader = csv.reader(logs)
+    file = open(report, 'w', newline='')
+    writer = csv.writer(file)
+
+    # logs_header = date, rfid_id, employee_id, reader_id
+    header = ['time', 'rfid_id', 'reader_id', 'reader_name']
+    next(reader)
+
+    for row in reader:
+        if row[2] is not '':
+            if int(row[2]) == employee_id:
+                time = row[0]
+                rfid_id = row[1]
+                reader_id = int(row[3])
+                reader_index = get_index(reader_id, 'readers')
+                reader_name = readers[reader_index].get_data()[3]
+                writer.writerow([time, rfid_id, reader_id, reader_name])
+
+    file.close()
+    logs.close()
 
 
 def __load_employees():

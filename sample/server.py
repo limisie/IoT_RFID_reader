@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
+import csv
 import logging
 from tkinter import simpledialog
 
 import paho.mqtt.client as mqtt
 import tkinter
-from datetime import datetime
 
 from helper import *
 from core import *
@@ -66,33 +66,34 @@ def delete_reader():
     client.unsubscribe(topic)
 
 
-# def new_employee_window():
-#     new_employee = tkinter.Tk()
-#     new_employee.title("Zarejestruj nowego pracownika")
-#
-#     name_input_label = tkinter.Label(new_employee, text="Imię")
-#     name_input_label.grid(row=0, column=0)
-#
-#     name_input_area = tkinter.Entry(new_employee)
-#     name_input_area.grid(row=0, column=1)
-#
-#     surname_input_label = tkinter.Label(new_employee, text="Nazwisko")
-#     surname_input_label.grid(row=1, column=0)
-#
-#     surname_input_area = tkinter.Entry(new_employee)
-#     surname_input_area.grid(row=1, column=1)
-#
-#     button = tkinter.Button(new_employee, text="Dodaj pracownika", width=10,
-#                             command=lambda: [register_employee(name_input_area.get(), surname_input_area.get()),
-#                                              new_employee.destroy()])
-#     button.grid(row=2, column=1)
-#
-#     button_stop = tkinter.Button(new_employee, text="Anuluj", width=10, command=new_employee.destroy())
-#     button_stop.grid(row=2, column=0)
+def employee_report():
+    employee_id = simpledialog.askstring('Wygeneruj raport odczytów', 'Podaj numer pracownika', parent=window)
+    print_report(int(employee_id))
+    print_report_window()
+
+
+def print_report_window():
+    print_report = tkinter.Tk()
+
+    file = open(report, newline='')
+    reader = csv.reader(file)
+
+    labels = []
+
+    for row in reader:
+        labels.append(tkinter.Label(print_report,
+                                    text='%s - RFID no. %s - czytnik %s (%s)' % (row[0], row[1], row[2], row[3])))
+
+    for label in labels:
+        label.pack(side="top")
+
+    file.close()
+
+    print_report.mainloop()
 
 
 def create_main_window():
-    window.geometry("274x155")
+    window.geometry("274x175")
     window.title("Serwer")
     hello_button = tkinter.Button(window, text="Hello from the server",
                                   command=lambda: client.publish("server/log", "Hello from the server"), width=30)
@@ -119,8 +120,12 @@ def create_main_window():
                                           command=lambda: delete_reader())
     delete_reader_button.grid(row=5, column=0)
 
+    report_button = tkinter.Button(window, text="Wygeneruj raport dla pracownika", width=30,
+                                          command=lambda: employee_report())
+    report_button.grid(row=6, column=0)
+
     exit_button = tkinter.Button(window, text="Zamknij", command=window.quit, width=30)
-    exit_button.grid(row=6, column=0)
+    exit_button.grid(row=7, column=0)
 
 
 def connect_to_broker():

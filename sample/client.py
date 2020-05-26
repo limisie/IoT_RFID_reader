@@ -3,7 +3,7 @@ from tkinter import messagebox
 import paho.mqtt.client as mqtt
 import tkinter
 
-reader_id = 5
+reader_id = 1
 
 broker = "Kajas-MBP"
 port = 8883
