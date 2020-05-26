@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 from tkinter import messagebox
-
 import paho.mqtt.client as mqtt
 import tkinter
 
-terminal_id = "T0"
+reader_id = 1
+
 broker = "Kajas-MBP"
 port = 8883
 
@@ -12,70 +12,71 @@ client = mqtt.Client()
 window = tkinter.Tk()
 
 
-def call_worker(worker_name):
-    client.publish("worker/name", worker_name + "." + terminal_id, )
+def call_card_reading(rfid_id):
+    # card_index = get_index(rfid_id, 'cards')
+    # if card_index is -1:
+    #     message = '{}: karta niezarejestrowana w systemie, {}'
+    #     message = message.format(rfid_id, readers[current_id].to_string)
+    # else:
+    #     employee_id = cards[card_index].get_user_id()
+    #     employee_index = get_index(employee_id, 'employees')
+    #     message = '{}: {}, {}'
+    #     message = message.format(rfid_id, employees[employee_index].to_string)
+    message = str(reader_id) + ',' + rfid_id
+    client.publish('card/log', message)
+
+
+def call_connection(up):
+    message = str(reader_id) + ',' + str(up)
+    client.publish('client/log', message)
 
 
 def create_main_window():
-    window.geometry("300x200")
-    window.title("SENDER")
+    window.geometry("425x53")
+    window.title("Czytnik RFID no. {}".format(reader_id))
 
-    intro_label = tkinter.Label(window, text="Select employee:")
-    intro_label.grid(row=0, columnspan=5)
+    input_label = tkinter.Label(window, text="Skanuj kartę RFID nr:")
+    input_label.grid(row=0, column=0)
 
-    button_1 = tkinter.Button(window, text="Employee 1",
-                              command=lambda: call_worker("Employee 1"))
-    button_1.grid(row=1, column=0)
-    button_2 = tkinter.Button(window, text="Employee 2",
-                              command=lambda: call_worker("Employee 2"))
-    button_2.grid(row=2, column=0)
-    button_3 = tkinter.Button(window, text="Employee 3",
-                              command=lambda: call_worker("Employee 3"))
-    button_3.grid(row=3, column=0)
-    button_4 = tkinter.Button(window, text="Employee 4",
-                              command=lambda: call_worker("Employee 4"))
-    button_4.grid(row=1, column=1)
-    button_5 = tkinter.Button(window, text="Employee 5",
-                              command=lambda: call_worker("Employee 5"))
-    button_5.grid(row=2, column=1)
-    button_6 = tkinter.Button(window, text="Employee 6",
-                              command=lambda: call_worker("Employee 6"))
-    button_6.grid(row=3, column=1)
-    button_stop = tkinter.Button(window, text="Stop", command=window.quit)
-    button_stop.grid(row=4, columnspan=2)
+    input_area = tkinter.Entry(window)
+    input_area.grid(row=0, column=1)
+
+    button = tkinter.Button(window, text="Skanuj", width=10,
+                            command=lambda: call_card_reading(input_area.get()))
+    button.grid(row=0, column=2)
+
+    button_stop = tkinter.Button(window, text="Zamknij", width=10, command=window.quit)
+    button_stop.grid(row=3, column=2)
 
 
 def process_message(client, userdata, message):
     message_decoded = (str(message.payload.decode("utf-8")))
     print(message_decoded)
-    messagebox.showinfo("Message from the Server", message_decoded)
+    messagebox.showwarning('Wiadomość z serwera', message_decoded)
 
 
 def connect_to_broker():
     client.tls_set("./certs/ca.crt")
     client.username_pw_set(username="client", password="1234")
     client.connect(broker, port)
-    call_worker("Client connected")
+    call_connection(1)
     client.on_message = process_message
     client.loop_start()
-    client.subscribe("server/name")
+    client.subscribe("server/log")
 
 
 def disconnect_from_broker():
-    call_worker("Client disconnected")
+    call_connection(0)
     client.loop_stop()
     client.disconnect()
 
 
-def run_sender():
+def run_client():
     connect_to_broker()
     create_main_window()
-
-    # Start to display window (It will stay here until window is displayed)
     window.mainloop()
-
     disconnect_from_broker()
 
 
 if __name__ == "__main__":
-    run_sender()
+    run_client()

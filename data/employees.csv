@@ -1,3 +1,4 @@
 id,name,surname,date_registered,date_unregistered
-1,"jan",kolwaski,14/04/2020,
-2,"maciej","nowak",14/04/2020,01/03/2020
+1,jan,kolwaski,14/04/2020,
+2,maciej,nowak,14/04/2020,01/03/2020
+3,anna,rataj,14/04/2020,
