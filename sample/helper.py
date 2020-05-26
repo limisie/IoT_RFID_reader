@@ -24,8 +24,15 @@ class Employee:
     def get_id(self):
         return self.__id
 
+    def unregister(self, date):
+        self.__date_unregistered = date
+        pass
+
+    def get_full_name(self):
+        return self.__name + ' ' + self.__surname
+
     def to_string(self):
-        if self.__date_unregistered is None:
+        if self.__date_unregistered == '':
             string = "Pracownik {}: {} {}"
             string = string.format(self.__id, self.__name, self.__surname)
         else:
@@ -35,13 +42,7 @@ class Employee:
         return string
 
     def get_data(self):
-        if self.__date_unregistered is None:
-            date_unregistered = ''
-        else:
-            date_unregistered = datetime.strftime(self.__date_unregistered, '%d/%m/%Y')
-
-        return [self.__id, self.__name, self.__surname, datetime.strftime(self.__date_registered, '%d/%m/%Y'),
-                date_unregistered]
+        return [self.__id, self.__name, self.__surname, self.__date_registered, self.__date_unregistered]
 
 
 class Reader:
@@ -54,7 +55,7 @@ class Reader:
         self.__description = description
 
     def to_string(self):
-        if self.__date_unregistered is None:
+        if self.__date_unregistered == '':
             string = "Czytnik RFID no. {}: {}"
             string = string.format(self.__terminal_id, self.__description)
         else:
@@ -70,13 +71,7 @@ class Reader:
         pass
 
     def get_data(self):
-        if self.__date_unregistered is None:
-            date_unregistered = ''
-        else:
-            date_unregistered = datetime.strftime(self.__date_unregistered, '%d/%m/%Y')
-
-        return [self.__terminal_id, datetime.strftime(self.__date_registered, '%d/%m/%Y'),
-                date_unregistered, self.__description]
+        return [self.__terminal_id, self.__date_registered, self.__date_unregistered, self.__description]
 
 
 class Card:
@@ -86,11 +81,11 @@ class Card:
         self.__employee_id = employee_id
         self.__date_actualized = date
 
-    def get_user_id(self):
+    def get_employee_id(self):
         return self.__employee_id
 
-    def set_new_user(self, user_id):
-        self.__employee_id = user_id
+    def set_new_employee(self, employee_id):
+        self.__employee_id = employee_id
         pass
 
     def set_date(self, date):
@@ -106,7 +101,7 @@ class Card:
         else:
             employee_id = self.__employee_id
 
-        return [self.__rfid_tag, employee_id, datetime.strftime(self.__date_actualized, '%d/%m/%Y')]
+        return [self.__rfid_tag, employee_id, self.__date_actualized]
 
     def to_string(self):
         if self.__employee_id is -1:
@@ -123,6 +118,14 @@ def __list_and_path(mode):
         'cards': (cards, cards_file),
         'employees': (employees, employees_file),
         'readers': (readers, readers_file)}[mode]
+
+
+def get_index(data_id, mode):
+    items, _ = __list_and_path(mode)
+    for i in range(len(items)):
+        if items[i].get_id() == data_id:
+            return i
+    return -1
 
 
 def save_changes(index, mode):
@@ -144,25 +147,17 @@ def save_log(date, rfid_tag, reader_id):
 
     card_index = get_index(rfid_tag, 'cards')
     if card_index == -1:
-        user_id = ''
+        employee_id = ''
     else:
-        user_id = cards[card_index].get_user_id()
-        if user_id == -1:
-            user_id = ''
+        employee_id = cards[card_index].get_employee_id()
+        if employee_id == -1:
+            employee_id = ''
 
-    row = [date, rfid_tag, user_id, reader_id]
+    row = [date, rfid_tag, employee_id, reader_id]
     writer.writerow(row)
 
     file.close()
     pass
-
-
-def get_index(data_id, mode):
-    items, _ = __list_and_path(mode)
-    for i in range(len(items)):
-        if items[i].get_id() == data_id:
-            return i
-    return -1
 
 
 def __load_employees():
@@ -183,9 +178,9 @@ def __load_employees():
             employee_id = int(row[0])
             name = row[1]
             surname = row[2]
-            date_registered = datetime.strptime(row[3], '%d/%m/%Y').date()
+            date_registered = row[3]
 
-            employees.append(Employee(employee_id, name, surname, date_registered, None))
+            employees.append(Employee(employee_id, name, surname, date_registered, ''))
 
         if int(row[0]) > last_id:
             last_id = int(row[0])
@@ -211,10 +206,10 @@ def __load_readers():
 
         if row[2] is '':
             reader_id = int(row[0])
-            date_registered = datetime.strptime(row[1], '%d/%m/%Y').date()
+            date_registered = row[1]
             description = row[3]
 
-            readers.append(Reader(reader_id, date_registered, None, description))
+            readers.append(Reader(reader_id, date_registered, '', description))
 
         if int(row[0]) > last_id:
             last_id = int(row[0])
@@ -238,12 +233,12 @@ def __load_cards():
 
         rfid_tag = row[0]
         if row[1] is '':
-            user_id = -1
+            employee_id = -1
         else:
-            user_id = int(row[1])
-        date_actualized = datetime.strptime(row[2], '%d/%m/%Y').date()
+            employee_id = int(row[1])
+        date_actualized = row[2]
 
-        cards.append(Card(rfid_tag, user_id, date_actualized))
+        cards.append(Card(rfid_tag, employee_id, date_actualized))
 
     file.close()
 

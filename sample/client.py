@@ -3,32 +3,24 @@ from tkinter import messagebox
 import paho.mqtt.client as mqtt
 import tkinter
 
-reader_id = 1
+reader_id = 5
 
 broker = "Kajas-MBP"
 port = 8883
+topic = 'client' + str(reader_id) + '/read'
 
 client = mqtt.Client()
 window = tkinter.Tk()
 
 
 def call_card_reading(rfid_id):
-    # card_index = get_index(rfid_id, 'cards')
-    # if card_index is -1:
-    #     message = '{}: karta niezarejestrowana w systemie, {}'
-    #     message = message.format(rfid_id, readers[current_id].to_string)
-    # else:
-    #     employee_id = cards[card_index].get_user_id()
-    #     employee_index = get_index(employee_id, 'employees')
-    #     message = '{}: {}, {}'
-    #     message = message.format(rfid_id, employees[employee_index].to_string)
     message = str(reader_id) + ',' + rfid_id
-    client.publish('card/log', message)
+    client.publish(topic, message)
 
 
 def call_connection(up):
     message = str(reader_id) + ',' + str(up)
-    client.publish('client/log', message)
+    client.publish('client/logs', message)
 
 
 def create_main_window():

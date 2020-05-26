@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-import distutils
-from datetime import datetime
 import logging
+from tkinter import simpledialog
 
 import paho.mqtt.client as mqtt
 import tkinter
-import time
+from datetime import datetime
+
 from helper import *
+from core import *
 
 # The broker name or IP address.
+
 broker = "Kajas-MBP"
 port = 8883
 
@@ -21,78 +23,104 @@ def process_message(client, userdata, message):
     message_decoded = (str(message.payload.decode('utf-8'))).split(',')
 
     if message_decoded[1] == '1':
-        log = str(datetime.today()) + ' połączono ' + readers[get_index(int(message_decoded[0]), 'readers')].to_string()
-        logging.info(log)
-        print(log)
+        connection_message(get_index(int(message_decoded[0]), 'readers'))
     elif message_decoded[1] == '0':
-        log = str(datetime.today()) + ' rozłączono ' + readers[
-            get_index(int(message_decoded[0]), 'readers')].to_string()
-        logging.info(log)
-        print(log)
+        disconnection_message(get_index(int(message_decoded[0]), 'readers'))
     else:
-        reader = readers[get_index(int(message_decoded[0]), 'readers')]
-        card_id = message_decoded[1]
-        date = str(datetime.today())
-        card_index = get_index(card_id, 'cards')
-
-        if card_index == -1:
-            employee_data = 'podana karta nie została zarejestrowana '
-            log = date + ' karta RFID no. ' + card_id + ', ' + employee_data + ', ' \
-                  + readers[get_index(int(message_decoded[0]), 'readers')].to_string()
-            logging.warning(log)
-        else:
-            employee_id = cards[card_index].get_user_id()
-            if employee_id == -1:
-                employee_data = 'podana karta nie jest skojarzona z żadnym pracownikiem '
-                log = date + ' karta RFID no. ' + card_id + ', ' + employee_data + ', ' \
-                      + readers[get_index(int(message_decoded[0]), 'readers')].to_string()
-                logging.warning(log)
-            else:
-                employee_index = get_index(employee_id, 'employees')
-                employee_data = employees[employee_index].to_string()
-                log = date + ' karta RFID no. ' + card_id + ', ' + employee_data + ', ' \
-              + readers[get_index(int(message_decoded[0]), 'readers')].to_string()
-                logging.info(log)
-        print(log)
-        save_log(date, card_id, reader.get_id())
+        read_message(get_index(int(message_decoded[0]), 'readers'), message_decoded[1])
 
 
-# def print_log_to_window():
-#     connection = sqlite3.connect("workers.db")
-#     cursor = connection.cursor()
-#     cursor.execute("SELECT * FROM workers_log")
-#     log_entries = cursor.fetchall()
-#     labels_log_entry = []
-#     print_log_window = tkinter.Tk()
+def new_employee():
+    name = simpledialog.askstring('Rejestracja nowego użytkownika', 'Podaj imię', parent=window)
+    surname = simpledialog.askstring('Rejestracja nowego użytkownika', 'Podaj nazwisko', parent=window)
+    register_employee(name, surname)
+
+
+def sign_card():
+    rfid_id = simpledialog.askstring('Przypisanie karty RFID pracownikowi', 'Podaj numer karty RFID', parent=window)
+    employee_id = simpledialog.askstring('Przypisanie karty RFID pracownikowi', 'Podaj numer pracownika', parent=window)
+    register_card(rfid_id, int(employee_id))
+
+
+def new_card():
+    rfid_id = simpledialog.askstring('Rejestracja nowej karty RFID', 'Podaj numer karty RFID', parent=window)
+    register_card(rfid_id)
+
+
+def delete_employee():
+    employee_id = simpledialog.askstring('Wyrejestruj pracownika', 'Podaj numer pracownika', parent=window)
+    unregister_employee(int(employee_id))
+
+
+def new_reader():
+    name = simpledialog.askstring('Rejestracja nowego czytnika RFID', 'Podaj krótki opis czytnika', parent=window)
+    register_reader(name)
+    new_topic = 'client' + str(readers[-1].get_id()) + '/read'
+    client.subscribe(new_topic)
+
+
+def delete_reader():
+    reader_id = simpledialog.askstring('Wyrejestruj czytnik kart RFID', 'Podaj numer czytnika', parent=window)
+    unregister_reader(int(reader_id))
+    topic = 'client' + reader_id + '/read'
+    client.unsubscribe(topic)
+
+
+# def new_employee_window():
+#     new_employee = tkinter.Tk()
+#     new_employee.title("Zarejestruj nowego pracownika")
 #
-#     for log_entry in log_entries:
-#         labels_log_entry.append(tkinter.Label(print_log_window, text=(
-#                 "On %s, %s used the terminal %s" % (log_entry[0], log_entry[1], log_entry[2]))))
+#     name_input_label = tkinter.Label(new_employee, text="Imię")
+#     name_input_label.grid(row=0, column=0)
 #
-#     for label in labels_log_entry:
-#         label.pack(side="top")
+#     name_input_area = tkinter.Entry(new_employee)
+#     name_input_area.grid(row=0, column=1)
 #
-#     connection.commit()
-#     connection.close()
+#     surname_input_label = tkinter.Label(new_employee, text="Nazwisko")
+#     surname_input_label.grid(row=1, column=0)
 #
-#     # Display this window.
-#     print_log_window.mainloop()
+#     surname_input_area = tkinter.Entry(new_employee)
+#     surname_input_area.grid(row=1, column=1)
+#
+#     button = tkinter.Button(new_employee, text="Dodaj pracownika", width=10,
+#                             command=lambda: [register_employee(name_input_area.get(), surname_input_area.get()),
+#                                              new_employee.destroy()])
+#     button.grid(row=2, column=1)
+#
+#     button_stop = tkinter.Button(new_employee, text="Anuluj", width=10, command=new_employee.destroy())
+#     button_stop.grid(row=2, column=0)
 
 
 def create_main_window():
-    window.geometry("250x100")
-    window.title("RECEIVER")
-    label = tkinter.Label(window, text="Listening to the MQTT")
+    window.geometry("274x155")
+    window.title("Serwer")
     hello_button = tkinter.Button(window, text="Hello from the server",
-                                  command=lambda: client.publish("server/name", "Hello from the server"))
-    exit_button = tkinter.Button(window, text="Stop", command=window.quit)
-    # print_log_button = tkinter.Button(
-    #     window, text="Print log", command=print_log_to_window)
+                                  command=lambda: client.publish("server/log", "Hello from the server"), width=30)
+    new_employee_button = tkinter.Button(window, text="Zarejestruj nowego pracownika", width=30,
+                                         command=lambda: new_employee())
+    new_employee_button.grid(row=0, column=0)
 
-    label.pack()
-    hello_button.pack(side="right")
-    exit_button.pack(side="right")
-    # print_log_button.pack(side="right")
+    employee_card_button = tkinter.Button(window, text="Przypisz pracownikowi kartę RFID", width=30,
+                                          command=lambda: sign_card())
+    employee_card_button.grid(row=1, column=0)
+
+    new_card_button = tkinter.Button(window, text="Zarejestruj nową kartę RFID", width=30, command=lambda: new_card())
+    new_card_button.grid(row=2, column=0)
+
+    delete_employee_button = tkinter.Button(window, text="Wyrejestruj pracownika", width=30,
+                                          command=lambda: delete_employee())
+    delete_employee_button.grid(row=3, column=0)
+
+    new_reader_button = tkinter.Button(window, text="Zarejestruj nowy czytnik kart RFID", width=30,
+                                          command=lambda: new_reader())
+    new_reader_button.grid(row=4, column=0)
+
+    delete_reader_button = tkinter.Button(window, text="Wyrejestruj czytnik kart RFID", width=30,
+                                          command=lambda: delete_reader())
+    delete_reader_button.grid(row=5, column=0)
+
+    exit_button = tkinter.Button(window, text="Zamknij", command=window.quit, width=30)
+    exit_button.grid(row=6, column=0)
 
 
 def connect_to_broker():
@@ -101,8 +129,10 @@ def connect_to_broker():
     client.connect(broker, port)
     client.on_message = process_message
     client.loop_start()
-    client.subscribe("client/log")
-    client.subscribe("card/log")
+    client.subscribe("client/logs")
+    for reader in readers:
+        topic = 'client' + str(reader.get_id()) + '/read'
+        client.subscribe(topic)
 
 
 def disconnect_from_broker():

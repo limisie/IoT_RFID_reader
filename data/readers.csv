@@ -1,4 +1,9 @@
 reader_id,date_registered,date_unregistered,description
 1,10/04/2020,,hol główny
-2,10/04/2020,15/05/2020,wejście zachodnie
+2,10/04/2020,15/05/2020 15:23:01,wejście zachodnie
 3,10/04/2020,,wejście południowe
+4,26/05/2020 20:21:13,,wejście nr 5
+3,10/04/2020,26/05/2020 20:21:13,wejście południowe
+5,26/05/2020 22:22:33,,wejście północne
+6,26/05/2020 22:55:53,,nowy
+6,26/05/2020 22:55:53,26/05/2020 22:55:58,nowy
