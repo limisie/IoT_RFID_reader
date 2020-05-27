@@ -13,16 +13,6 @@ client = mqtt.Client()
 window = tkinter.Tk()
 
 
-def call_card_reading(rfid_id):
-    message = str(reader_id) + ',' + rfid_id
-    client.publish(topic, message)
-
-
-def call_connection(up):
-    message = str(reader_id) + ',' + str(up)
-    client.publish('client/logs', message)
-
-
 def create_main_window():
     window.geometry("425x53")
     window.title("Czytnik RFID no. {}".format(reader_id))
@@ -45,6 +35,16 @@ def process_message(client, userdata, message):
     message_decoded = (str(message.payload.decode("utf-8")))
     print(message_decoded)
     messagebox.showwarning('Wiadomość z serwera', message_decoded)
+
+
+def call_card_reading(rfid_id):
+    message = str(reader_id) + ',' + rfid_id
+    client.publish(topic, message)
+
+
+def call_connection(up):
+    message = str(reader_id) + ',' + str(up)
+    client.publish('client/logs', message)
 
 
 def connect_to_broker():

@@ -1,6 +1,6 @@
-def not_found_err(message):
-    print("nie znaleziono", message, sep='')
+def not_found_err(date: str, message):
+    return date + ' NIE ZNALEZIONO ' + message
 
 
-def impossible_err(message):
-    print("nie można wykonać operacji", message, sep='')
+def impossible_err(date: str, message):
+    return date + ' NIE MOŻNA WYKONAC OPERACJI ' + message

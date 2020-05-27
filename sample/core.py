@@ -13,22 +13,23 @@ def register_reader(name=''):
                date_unregistered='',
                description=name))
     Reader.reader_id_counter += 1
+
     __log_reader_register(readers[-1].get_id())
     save_changes(-1, 'readers')
-    pass
 
 
 def unregister_reader(reader_id):
     index = get_index(reader_id, 'readers')
 
     if index is -1:
-        not_found_err(": core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie")
+        __log_warning(not_found_err(datetime.today().strftime('%d/%m/%Y %H:%M:%S'), ": core.py - unregister_reader "
+                                    "- podanego czytnika nie ma aktualnie zarejestrowanego w systemie"))
     else:
         readers[index].unregister(date=datetime.today().strftime('%d/%m/%Y %H:%M:%S'))
+
         __log_reader_unregister(reader_id)
         save_changes(index, 'readers')
         readers.pop(index)
-    pass
 
 
 def register_card(rfid_tag, employee_id=-1):
@@ -40,20 +41,23 @@ def register_card(rfid_tag, employee_id=-1):
             __log_card_register(rfid_tag)
             save_changes(-1, 'cards')
         else:
-            impossible_err((": core.py - register_card: karta no. {}"
-                            " - podana karta jest już w systemie").format(rfid_tag))
+            __log_warning(impossible_err(datetime.today().strftime('%d/%m/%Y %H:%M:%S'),
+                                         (": core.py - register_card: karta no. {} "
+                                          "- podana karta jest już w systemie").format(rfid_tag)))
     else:
         employee_index = get_index(employee_id, 'employees')
         if employee_index is -1:
-            not_found_err(": core.py - register_card: pracownik no {} nie istnieje".format(employee_id))
+            __log_warning(not_found_err(datetime.today().strftime('%d/%m/%Y %H:%M:%S'),
+                                        ": core.py - register_card: pracownik no {} nie istnieje".format(employee_id)))
             if index is -1:
                 cards.append(Card(rfid_tag=rfid_tag, employee_id=-1,
                                   date=datetime.today().strftime('%d/%m/%Y %H:%M:%S')))
                 __log_card_register(rfid_tag)
                 save_changes(-1, 'cards')
             else:
-                impossible_err((": core.py - register_card: karta no. {} "
-                                "- podana karta jest już w systemie").format(rfid_tag))
+                __log_warning(impossible_err(datetime.today().strftime('%d/%m/%Y %H:%M:%S'),
+                                             (": core.py - register_card: karta no. {} "
+                                              "- podana karta jest już w systemie").format(rfid_tag)))
         else:
             if index is -1:
                 cards.append(Card(rfid_tag=rfid_tag, employee_id=employee_id,
@@ -66,17 +70,18 @@ def register_card(rfid_tag, employee_id=-1):
                 __log_sign_card(rfid_tag, employee_id)
                 save_changes(index, 'cards')
             else:
-                impossible_err((": core.py - register_card: karta no. {} "
-                                "- podana karta ma już przypisanego pracownika").format(rfid_tag))
-    pass
+                __log_warning(impossible_err(datetime.today().strftime('%d/%m/%Y %H:%M:%S'),
+                                             (": core.py - register_card: karta no. {} "
+                                              "- podana karta ma już przypisanego pracownika").format(rfid_tag)))
 
 
 def unregister_card_employee(rfid_tag):
     index = get_index(rfid_tag, 'cards')
 
     if index is -1:
-        not_found_err((": core.py - unregister_card_employee: karta no. {} "
-                       "- podana karta nie istnieje w systemie").format(rfid_tag))
+        __log_warning(not_found_err(datetime.today().strftime('%d/%m/%Y %H:%M:%S'),
+                                    (": core.py - unregister_card_employee: karta no. {} "
+                                     "- podana karta nie istnieje w systemie").format(rfid_tag)))
     else:
         if cards[index].get_employeyee_id() is not -1:
             __log_unsign_card(rfid_tag)
@@ -84,9 +89,9 @@ def unregister_card_employee(rfid_tag):
             cards[index].set_date(datetime.today().strftime('%d/%m/%Y %H:%M:%S'))
             save_changes(index, 'cards')
         else:
-            impossible_err((": core.py - unregister_card_employee: karta no. {} "
-                            "- podana karta nie jest skojarzona z żadnym użytkownikiem").format(rfid_tag))
-    pass
+            __log_warning(impossible_err(datetime.today().strftime('%d/%m/%Y %H:%M:%S'),
+                                         (": core.py - unregister_card_employee: karta no. {} - "
+                                          "podana karta nie jest skojarzona z żadnym użytkownikiem").format(rfid_tag)))
 
 
 def register_employee(name, surname):
@@ -102,8 +107,8 @@ def unregister_employee(employee_id):
     index = get_index(employee_id, 'employees')
 
     if index is -1:
-        not_found_err(": core.py - unregister_employee"
-                      " - podanego pracownika nie ma aktualnie zarejestrowanego w systemie")
+        __log_warning(not_found_err(datetime.today().strftime('%d/%m/%Y %H:%M:%S'), ": core.py - unregister_employee"
+                      " - podanego pracownika nie ma aktualnie zarejestrowanego w systemie"))
     else:
         employees[index].unregister(date=datetime.today().strftime('%d/%m/%Y %H:%M:%S'))
         __log_employee_unregister(employee_id, index)
@@ -198,18 +203,18 @@ def __log_employee_unregister(employee_id, index):
 
 
 def __log_reader_register(reader_id):
-    log = datetime.today().strftime('%d/%m/%Y %H:%M:%S') + ' zarejestrowano czytrnik RFID no. ' + str(reader_id)
+    log = datetime.today().strftime('%d/%m/%Y %H:%M:%S') + ' zarejestrowano czytnik RFID no. ' + str(reader_id)
     logging.info(log)
     print(log)
     pass
 
 
 def __log_reader_unregister(reader_id):
-    log = datetime.today().strftime('%d/%m/%Y %H:%M:%S') + ' wyrejestrowano czytrnik RFID no. ' + str(reader_id)
+    log = datetime.today().strftime('%d/%m/%Y %H:%M:%S') + ' wyrejestrowano czytnik RFID no. ' + str(reader_id)
     logging.info(log)
     print(log)
-    pass
 
 
-if __name__ == "__main__":
-    load_db()
+def __log_warning(message):
+    logging.warning(message)
+    print(message)

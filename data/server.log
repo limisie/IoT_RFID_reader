@@ -36,3 +36,41 @@ INFO:root:27/05/2020 00:05:05 rozłączono Czytnik RFID no. 5: wejście północ
 INFO:root:27/05/2020 00:05:23 połączono Czytnik RFID no. 1: hol główny
 INFO:root:27/05/2020 00:05:27 karta RFID no. jKi9iJ, Pracownik 3: Maciej Nowak, Czytnik RFID no. 1: hol główny
 INFO:root:27/05/2020 00:05:29 rozłączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 10:29:26 zarejestrowano kartę no. 7868
+INFO:root:27/05/2020 10:31:06 zarejestrowano kartę no. sdfgf
+INFO:root:27/05/2020 10:31:37 kartę no. sdfgf przypisano pracownikowi no. 7
+INFO:root:27/05/2020 10:33:07 zarejestrowano czytrnik RFID no. 7
+INFO:root:27/05/2020 10:33:22 wyrejestrowano czytrnik RFID no. 7
+INFO:root:27/05/2020 10:42:13 zarejestrowano pracownika no. 9 tomasz wójcik
+INFO:root:27/05/2020 10:42:27 zarejestrowano kartę no. dfbvdf
+INFO:root:27/05/2020 10:44:05 zarejestrowano pracownika no. 10 tomasz man
+INFO:root:27/05/2020 10:44:18 wyrejestrowano pracownika no. 10 tomasz man
+INFO:root:27/05/2020 11:16:26 zarejestrowano pracownika no. 11 anna błach
+INFO:root:27/05/2020 11:16:42 wyrejestrowano pracownika no. 11 anna błach
+INFO:root:27/05/2020 11:17:07 połączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 11:17:17 karta RFID no. sdfgf, Pracownik 7: Maciej Nowak, Czytnik RFID no. 1: hol główny
+WARNING:root:27/05/2020 11:17:23 karta RFID no. jsf9sd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 11:17:29 rozłączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 11:31:22 wyrejestrowano pracownika no. 9 tomasz wójcik
+INFO:root:27/05/2020 11:33:45 wyrejestrowano czytnik RFID no. 1
+WARNING:root:27/05/2020 11:44:10 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie
+WARNING:root:27/05/2020 11:44:39 NIE ZNALEZIONO : core.py - unregister_employee - podanego pracownika nie ma aktualnie zarejestrowanego w systemie
+WARNING:root:27/05/2020 11:45:14 NIE ZNALEZIONO : core.py - register_card: pracownik no 11 nie istnieje
+WARNING:root:27/05/2020 11:45:14 NIE MOŻNA WYKONAC OPERACJI : core.py - register_card: karta no. sdfgf - podana karta jest już w systemie
+WARNING:root:27/05/2020 11:45:47 NIE ZNALEZIONO : core.py - register_card: pracownik no 11 nie istnieje
+WARNING:root:27/05/2020 11:45:47 NIE MOŻNA WYKONAC OPERACJI : core.py - register_card: karta no. 7868 - podana karta jest już w systemie
+INFO:root:27/05/2020 11:46:19 kartę no. 7868 przypisano pracownikowi no. 7
+INFO:root:27/05/2020 11:46:56 połączono Czytnik RFID no. 5: wejście północne
+INFO:root:27/05/2020 11:47:52 rozłączono Czytnik RFID no. 5: wejście północne
+INFO:root:27/05/2020 11:48:54 połączono Czytnik RFID no. 5: wejście północne
+INFO:root:27/05/2020 11:48:56 rozłączono Czytnik RFID no. 5: wejście północne
+INFO:root:27/05/2020 11:49:05 połączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 11:49:29 karta RFID no. 7868, Pracownik 7: Maciej Nowak, Czytnik RFID no. 1: hol główny
+WARNING:root:27/05/2020 11:49:41 karta RFID no. dfbvdf, podana karta nie jest skojarzona z żadnym pracownikiem , Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 11:50:04 rozłączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 11:50:37 wyrejestrowano czytnik RFID no. 1
+WARNING:root:27/05/2020 11:50:42 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie
+INFO:root:27/05/2020 11:50:43 wyrejestrowano czytnik RFID no. 3
+INFO:root:27/05/2020 11:50:45 wyrejestrowano czytnik RFID no. 4
+WARNING:root:27/05/2020 11:50:47 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie
+INFO:root:27/05/2020 11:59:36 zarejestrowano kartę no. 4353
