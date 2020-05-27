@@ -138,7 +138,6 @@ def save_changes(index, mode):
     writer.writerow(row)
 
     file.close()
-    pass
 
 
 def save_log(date, rfid_tag, reader_id):

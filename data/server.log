@@ -89,3 +89,6 @@ INFO:root:27/05/2020 14:54:40 połączono Czytnik RFID no. 1: hol główny
 WARNING:root:27/05/2020 14:54:46 karta RFID no. dfdfd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
 INFO:root:27/05/2020 14:55:00 karta RFID no. dfgdr, Pracownik 12: g g, Czytnik RFID no. 1: hol główny
 INFO:root:27/05/2020 14:55:02 rozłączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 16:19:36 połączono Czytnik RFID no. 1: hol główny
+WARNING:root:27/05/2020 16:19:42 karta RFID no. sdfssd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 16:19:45 rozłączono Czytnik RFID no. 1: hol główny

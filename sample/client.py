@@ -7,7 +7,7 @@ reader_id = 1
 
 broker = "Kajas-MBP"
 port = 8883
-topic = 'client' + str(reader_id) + '/read'
+topic = 'client/reader' + str(reader_id) + '/read'
 
 client = mqtt.Client()
 window = tkinter.Tk()
@@ -54,7 +54,6 @@ def connect_to_broker():
     call_connection(1)
     client.on_message = process_message
     client.loop_start()
-    client.subscribe("server/log")
 
 
 def disconnect_from_broker():
@@ -65,6 +64,7 @@ def disconnect_from_broker():
 
 def run_client():
     connect_to_broker()
+    client.subscribe("server/logs")
     create_main_window()
     window.mainloop()
     disconnect_from_broker()

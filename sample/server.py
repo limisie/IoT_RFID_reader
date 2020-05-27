@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import csv
-import logging
 from tkinter import simpledialog
 
 import paho.mqtt.client as mqtt
@@ -8,14 +6,11 @@ import tkinter
 
 from core import *
 
-# The broker name or IP address.
-
 broker = "Kajas-MBP"
 port = 8883
 
 client = mqtt.Client()
 window = tkinter.Tk()
-logging.basicConfig(filename='./data/server.log', level=logging.INFO)
 
 
 def create_main_window():
@@ -85,16 +80,12 @@ def delete_employee():
 def new_reader():
     name = simpledialog.askstring('Rejestracja nowego czytnika RFID', 'Podaj krótki opis czytnika', parent=window)
     register_reader(name)
-    new_topic = 'client' + str(readers[-1].get_id()) + '/read'
-    client.subscribe(new_topic)
     logs_box()
 
 
 def delete_reader():
     reader_id = simpledialog.askstring('Wyrejestruj czytnik kart RFID', 'Podaj numer czytnika', parent=window)
     unregister_reader(int(reader_id))
-    topic = 'client' + reader_id + '/read'
-    client.unsubscribe(topic)
     logs_box()
 
 
@@ -139,10 +130,6 @@ def connect_to_broker():
     client.connect(broker, port)
     client.on_message = process_message
     client.loop_start()
-    client.subscribe("client/logs")
-    for reader in readers:
-        topic = 'client' + str(reader.get_id()) + '/read'
-        client.subscribe(topic)
 
 
 def process_message(client, userdata, message):
@@ -164,6 +151,8 @@ def disconnect_from_broker():
 
 def run_receiver():
     connect_to_broker()
+    client.subscribe("client/logs")
+    client.subscribe("client/+/read")
     create_main_window()
     window.mainloop()
     disconnect_from_broker()
