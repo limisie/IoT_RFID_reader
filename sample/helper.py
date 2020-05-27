@@ -186,6 +186,20 @@ def print_report(employee_id):
     logs.close()
 
 
+def report_to_list():
+    file = open(report, newline='')
+    reader = csv.reader(file)
+
+    report_list = []
+
+    for row in reader:
+        report_list.append(row)
+
+    print(report_list)
+
+    return report_list
+
+
 def __load_employees():
     file = open(employees_file, newline='')
     reader = csv.reader(file)

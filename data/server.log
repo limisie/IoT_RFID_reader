@@ -74,3 +74,18 @@ INFO:root:27/05/2020 11:50:43 wyrejestrowano czytnik RFID no. 3
 INFO:root:27/05/2020 11:50:45 wyrejestrowano czytnik RFID no. 4
 WARNING:root:27/05/2020 11:50:47 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie
 INFO:root:27/05/2020 11:59:36 zarejestrowano kartę no. 4353
+INFO:root:27/05/2020 14:42:12 połączono Czytnik RFID no. 1: hol główny
+WARNING:root:27/05/2020 14:42:18 karta RFID no. dgdffd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 14:42:21 rozłączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 14:42:37 zarejestrowano pracownika no. 12 g g
+INFO:root:27/05/2020 14:42:47 zarejestrowano kartę no. dfgdr
+INFO:root:27/05/2020 14:42:47 kartę no. dfgdr przypisano pracownikowi no. 12
+INFO:root:27/05/2020 14:42:55 połączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 14:43:03 karta RFID no. dfgdr, Pracownik 12: g g, Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 14:43:06 karta RFID no. dfgdr, Pracownik 12: g g, Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 14:43:11 rozłączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 14:48:54 połączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 14:54:40 połączono Czytnik RFID no. 1: hol główny
+WARNING:root:27/05/2020 14:54:46 karta RFID no. dfdfd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 14:55:00 karta RFID no. dfgdr, Pracownik 12: g g, Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 14:55:02 rozłączono Czytnik RFID no. 1: hol główny

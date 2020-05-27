@@ -4,7 +4,9 @@ from datetime import datetime
 from helper import *
 from error import *
 
-logging.basicConfig(filename='./data/server.log', level=logging.INFO)
+log_file = './data/server.log'
+
+logging.basicConfig(filename=log_file, level=logging.INFO)
 
 
 def register_reader(name=''):
@@ -154,6 +156,24 @@ def read_message(reader_index, card_id):
     print(log)
     save_log(date, card_id, reader.get_id())
     pass
+
+
+def logs_to_list():
+    file = open(log_file)
+
+    logs = []
+    max_i = 10
+    i = 0
+    for row in enumerate(reversed(list(file))):
+        logs.append(row[1])
+        i += 1
+        if i == max_i:
+            break
+
+    logs.reverse()
+
+    file.close()
+    return logs
 
 
 def __log_sign_card(rfid_tag, employee_id):

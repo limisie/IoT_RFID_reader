@@ -6,7 +6,6 @@ from tkinter import simpledialog
 import paho.mqtt.client as mqtt
 import tkinter
 
-# from helper import *
 from core import *
 
 # The broker name or IP address.
@@ -109,19 +108,15 @@ def employee_report():
 def print_report_window():
     print_report = tkinter.Tk()
 
-    file = open(report, newline='')
-    reader = csv.reader(file)
-
+    report_list = report_to_list()
     labels = []
 
-    for row in reader:
+    for row in report_list:
         labels.append(tkinter.Label(print_report,
                                     text='%s - RFID no. %s - czytnik %s (%s)' % (row[0], row[1], row[2], row[3])))
 
     for label in labels:
         label.pack(side="top")
-
-    file.close()
 
     print_report.mainloop()
 
@@ -130,25 +125,12 @@ def logs_box():
     log_box = tkinter.Text(window, height=13, wrap='word')
     log_box.grid(row=0, column=2, rowspan=10, sticky='E')
 
-    file = open('./data/server.log')
+    logs = logs_to_list()
 
-    logs = []
-    max_i = 10
-    i = 0
-    for row in enumerate(reversed(list(file))):
-        logs.append(row[1])
-        i += 1
-        if i == max_i:
-            break
-
-    logs.reverse()
-
-    for i in range(0, max_i):
-        log_box.insert(tkinter.INSERT, logs[i])
+    for log in logs:
+        log_box.insert(tkinter.INSERT, log)
 
     log_box.config(state='disabled')
-
-    file.close()
 
 
 def connect_to_broker():
