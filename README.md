@@ -1,2 +1,2 @@
-# iot_rfid_reader
-Internet of Things Project - RFID reader
+# System ewidencyjny czasu pracy
+Projekt ma na celu stworzenie systemu, który rejestruje czas pracy pracowników w pewnym przedsiębiorstwie. Składa się z aplikacji centralnej - aplikacji serwera, która przetwarza dane nadsyłane od klientów i je gromadzi, oraz z aplikacji klienckiej, która domyślnie ma być uruchamiana na zestawach Raspberry Pi wyposażonych w czytniki kart RFID. Ewidencja czasu pracy pracownika bazuje na danych o czasie, w którym pracownik zeskanował swoją kartę RFID - raz przy wejściu i raz przy wyjściu z miejsca pracy, przy czym dostępnych czytników kart (klientów) może być wiele.
