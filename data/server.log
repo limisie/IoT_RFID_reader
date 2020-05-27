@@ -1,98 +1,17 @@
-INFO:root:26/05/2020 20:53:09 zarejestrowano pracownika no. 7 Kaja Limisiewicz
-INFO:root:26/05/2020 20:56:04 zarejestrowano pracownika no. 8 Janina Nowak
-INFO:root:26/05/2020 21:15:52 zarejestrowano kartę no. flkdgj
-INFO:root:26/05/2020 21:17:39 zarejestrowano pracownika no. 7 Maciej Nowak
-INFO:root:26/05/2020 21:44:58 zarejestrowano kartę no. 
-INFO:root:26/05/2020 21:47:31 kartę no. flkdgjprzypisano pracownikowi no. 4
-INFO:root:26/05/2020 21:48:04 zarejestrowano kartę no. dgjjod
-INFO:root:26/05/2020 22:17:36 połączono Czytnik RFID no. 4: wejście nr 5
-INFO:root:26/05/2020 22:19:22 rozłączono Czytnik RFID no. 4: wejście nr 5
-INFO:root:26/05/2020 22:20:06 zarejestrowano czytrnik RFID no. 5
-INFO:root:26/05/2020 22:20:37 połączono Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:20:57 rozłączono Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:22:33 zarejestrowano czytrnik RFID no. 5
-INFO:root:26/05/2020 22:22:43 połączono Czytnik RFID no. 5: wejście północne
-WARNING:root:26/05/2020 22:22:57 karta RFID no. elfjeir, podanej karty nie ma w systemie , Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:23:14 rozłączono Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:42:32 połączono Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:43:06 rozłączono Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:43:15 połączono Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:43:35 rozłączono Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:43:59 połączono Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:44:02 karta RFID no. jKi9iJ, Pracownik 3: Maciej Nowak, Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:44:07 rozłączono Czytnik RFID no. 5: wejście północne
-INFO:root:26/05/2020 22:51:21 zarejestrowano pracownika no. 8 Piotr Nowak
-INFO:root:26/05/2020 22:51:34 zarejestrowano kartę no. eirj6F
-INFO:root:26/05/2020 22:51:34 kartę no. eirj6F przypisano pracownikowi no. 8
-INFO:root:26/05/2020 22:52:50 zarejestrowano kartę no. hjkh8S
-INFO:root:26/05/2020 22:55:42 wyrejestrowano pracownika no. 8 Piotr Nowak
-INFO:root:26/05/2020 22:55:53 zarejestrowano czytrnik RFID no. 6
-INFO:root:26/05/2020 22:55:58 wyrejestrowano czytrnik RFID no. 6
-INFO:root:27/05/2020 00:04:22 kartę no. fshi8q przypisano pracownikowi no. 3
-INFO:root:27/05/2020 00:04:48 połączono Czytnik RFID no. 5: wejście północne
-INFO:root:27/05/2020 00:04:53 karta RFID no. fshi8q, Pracownik 3: Maciej Nowak, Czytnik RFID no. 5: wejście północne
-INFO:root:27/05/2020 00:05:02 karta RFID no. jKi9iJ, Pracownik 3: Maciej Nowak, Czytnik RFID no. 5: wejście północne
-INFO:root:27/05/2020 00:05:05 rozłączono Czytnik RFID no. 5: wejście północne
-INFO:root:27/05/2020 00:05:23 połączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 00:05:27 karta RFID no. jKi9iJ, Pracownik 3: Maciej Nowak, Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 00:05:29 rozłączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 10:29:26 zarejestrowano kartę no. 7868
-INFO:root:27/05/2020 10:31:06 zarejestrowano kartę no. sdfgf
-INFO:root:27/05/2020 10:31:37 kartę no. sdfgf przypisano pracownikowi no. 7
-INFO:root:27/05/2020 10:33:07 zarejestrowano czytrnik RFID no. 7
-INFO:root:27/05/2020 10:33:22 wyrejestrowano czytrnik RFID no. 7
-INFO:root:27/05/2020 10:42:13 zarejestrowano pracownika no. 9 tomasz wójcik
-INFO:root:27/05/2020 10:42:27 zarejestrowano kartę no. dfbvdf
-INFO:root:27/05/2020 10:44:05 zarejestrowano pracownika no. 10 tomasz man
-INFO:root:27/05/2020 10:44:18 wyrejestrowano pracownika no. 10 tomasz man
-INFO:root:27/05/2020 11:16:26 zarejestrowano pracownika no. 11 anna błach
-INFO:root:27/05/2020 11:16:42 wyrejestrowano pracownika no. 11 anna błach
-INFO:root:27/05/2020 11:17:07 połączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 11:17:17 karta RFID no. sdfgf, Pracownik 7: Maciej Nowak, Czytnik RFID no. 1: hol główny
-WARNING:root:27/05/2020 11:17:23 karta RFID no. jsf9sd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 11:17:29 rozłączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 11:31:22 wyrejestrowano pracownika no. 9 tomasz wójcik
-INFO:root:27/05/2020 11:33:45 wyrejestrowano czytnik RFID no. 1
-WARNING:root:27/05/2020 11:44:10 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie
-WARNING:root:27/05/2020 11:44:39 NIE ZNALEZIONO : core.py - unregister_employee - podanego pracownika nie ma aktualnie zarejestrowanego w systemie
-WARNING:root:27/05/2020 11:45:14 NIE ZNALEZIONO : core.py - register_card: pracownik no 11 nie istnieje
-WARNING:root:27/05/2020 11:45:14 NIE MOŻNA WYKONAC OPERACJI : core.py - register_card: karta no. sdfgf - podana karta jest już w systemie
-WARNING:root:27/05/2020 11:45:47 NIE ZNALEZIONO : core.py - register_card: pracownik no 11 nie istnieje
-WARNING:root:27/05/2020 11:45:47 NIE MOŻNA WYKONAC OPERACJI : core.py - register_card: karta no. 7868 - podana karta jest już w systemie
-INFO:root:27/05/2020 11:46:19 kartę no. 7868 przypisano pracownikowi no. 7
-INFO:root:27/05/2020 11:46:56 połączono Czytnik RFID no. 5: wejście północne
-INFO:root:27/05/2020 11:47:52 rozłączono Czytnik RFID no. 5: wejście północne
-INFO:root:27/05/2020 11:48:54 połączono Czytnik RFID no. 5: wejście północne
-INFO:root:27/05/2020 11:48:56 rozłączono Czytnik RFID no. 5: wejście północne
-INFO:root:27/05/2020 11:49:05 połączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 11:49:29 karta RFID no. 7868, Pracownik 7: Maciej Nowak, Czytnik RFID no. 1: hol główny
-WARNING:root:27/05/2020 11:49:41 karta RFID no. dfbvdf, podana karta nie jest skojarzona z żadnym pracownikiem , Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 11:50:04 rozłączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 11:50:37 wyrejestrowano czytnik RFID no. 1
-WARNING:root:27/05/2020 11:50:42 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie
-INFO:root:27/05/2020 11:50:43 wyrejestrowano czytnik RFID no. 3
-INFO:root:27/05/2020 11:50:45 wyrejestrowano czytnik RFID no. 4
-WARNING:root:27/05/2020 11:50:47 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie
-INFO:root:27/05/2020 11:59:36 zarejestrowano kartę no. 4353
-INFO:root:27/05/2020 14:42:12 połączono Czytnik RFID no. 1: hol główny
-WARNING:root:27/05/2020 14:42:18 karta RFID no. dgdffd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 14:42:21 rozłączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 14:42:37 zarejestrowano pracownika no. 12 g g
-INFO:root:27/05/2020 14:42:47 zarejestrowano kartę no. dfgdr
-INFO:root:27/05/2020 14:42:47 kartę no. dfgdr przypisano pracownikowi no. 12
-INFO:root:27/05/2020 14:42:55 połączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 14:43:03 karta RFID no. dfgdr, Pracownik 12: g g, Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 14:43:06 karta RFID no. dfgdr, Pracownik 12: g g, Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 14:43:11 rozłączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 14:48:54 połączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 14:54:40 połączono Czytnik RFID no. 1: hol główny
-WARNING:root:27/05/2020 14:54:46 karta RFID no. dfdfd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 14:55:00 karta RFID no. dfgdr, Pracownik 12: g g, Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 14:55:02 rozłączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 16:19:36 połączono Czytnik RFID no. 1: hol główny
-WARNING:root:27/05/2020 16:19:42 karta RFID no. sdfssd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 16:19:45 rozłączono Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 17:12:43 połączono Czytnik RFID no. 1: hol główny
-WARNING:root:27/05/2020 17:12:59 karta RFID no. eiwhfi4, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
-INFO:root:27/05/2020 17:13:53 rozłączono Czytnik RFID no. 1: hol główny
-WARNING:root:27/05/2020 17:14:25 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie
+INFO:root:27/05/2020 18:47:40 zarejestrowano pracownika no. 11 Joanna Grudzień
+INFO:root:27/05/2020 18:47:47 zarejestrowano kartę no. fhjdsg
+INFO:root:27/05/2020 18:47:47 kartę no. fhjdsg przypisano pracownikowi no. 11
+INFO:root:27/05/2020 18:47:52 zarejestrowano kartę no. ogirgjdr
+INFO:root:27/05/2020 18:48:02 zarejestrowano czytnik RFID no. 1
+INFO:root:27/05/2020 18:48:09 zarejestrowano czytnik RFID no. 2
+INFO:root:27/05/2020 18:48:17 zarejestrowano czytnik RFID no. 3
+INFO:root:27/05/2020 18:48:19 zarejestrowano czytnik RFID no. 4
+WARNING:root:27/05/2020 18:48:26 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie
+INFO:root:27/05/2020 18:48:36 wyrejestrowano czytnik RFID no. 2
+INFO:root:27/05/2020 18:49:02 połączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 18:49:18 karta RFID no. fhjdsg, Pracownik 11: Joanna Grudzień, Czytnik RFID no. 1: hol główny
+WARNING:root:27/05/2020 18:49:37 karta RFID no. dhdfdg, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 18:50:11 połączono Czytnik RFID no. 3: wejście wschodnie
+INFO:root:27/05/2020 18:50:39 karta RFID no. fhjdsg, Pracownik 11: Joanna Grudzień, Czytnik RFID no. 3: wejście wschodnie
+INFO:root:27/05/2020 18:50:56 rozłączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 18:50:57 rozłączono Czytnik RFID no. 3: wejście wschodnie

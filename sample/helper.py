@@ -283,6 +283,6 @@ def __load_cards():
 
 
 def load_db():
-    __load_cards()
     __load_employees()
     __load_readers()
+    __load_cards()
