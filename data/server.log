@@ -92,3 +92,7 @@ INFO:root:27/05/2020 14:55:02 rozłączono Czytnik RFID no. 1: hol główny
 INFO:root:27/05/2020 16:19:36 połączono Czytnik RFID no. 1: hol główny
 WARNING:root:27/05/2020 16:19:42 karta RFID no. sdfssd, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
 INFO:root:27/05/2020 16:19:45 rozłączono Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 17:12:43 połączono Czytnik RFID no. 1: hol główny
+WARNING:root:27/05/2020 17:12:59 karta RFID no. eiwhfi4, podanej karty nie ma w systemie , Czytnik RFID no. 1: hol główny
+INFO:root:27/05/2020 17:13:53 rozłączono Czytnik RFID no. 1: hol główny
+WARNING:root:27/05/2020 17:14:25 NIE ZNALEZIONO : core.py - unregister_reader - podanego czytnika nie ma aktualnie zarejestrowanego w systemie

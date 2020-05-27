@@ -92,12 +92,13 @@ def delete_reader():
 def employee_report():
     employee_id = simpledialog.askstring('Wygeneruj raport odczytów', 'Podaj numer pracownika', parent=window)
     print_report(int(employee_id))
-    print_report_window()
+    print_report_window(int(employee_id))
     logs_box()
 
 
-def print_report_window():
+def print_report_window(employee_id):
     print_report = tkinter.Tk()
+    print_report.title("Raport dla pracownika no." + str(employee_id))
 
     report_list = report_to_list()
     labels = []
